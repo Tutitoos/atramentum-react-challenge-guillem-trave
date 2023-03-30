@@ -23,6 +23,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "husky": "^8.0.0",
+    "lint-staged": "^13.2.0",
     "typescript": "5.0.2"
   }
 }
