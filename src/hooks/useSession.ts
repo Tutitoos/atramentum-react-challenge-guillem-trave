@@ -1,5 +1,7 @@
 import type { Session } from "@/types/clientTypes";
 import axios from "axios";
+
+const webUrl = process.env.NEXT_PUBLIC_WEB_URL;
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 const adminUsername = process.env.NEXT_PUBLIC_ADMIN_USERNAME;
 const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
@@ -30,7 +32,7 @@ const useSession = () => {
 
   const getToken = async (): Promise<string | null> => {
     try {
-      const response = await axios.get<string>(`http://localhost:3000/api/session`);
+      const response = await axios.get<string>(`${webUrl}/api/session`);
       const responseData = response.data;
 
       return responseData;
@@ -41,7 +43,7 @@ const useSession = () => {
 
   const setToken = async (token: string): Promise<string | null> => {
     try {
-      const response = await axios.post<string>(`http://localhost:3000/api/session`, {
+      const response = await axios.post<string>(`${webUrl}/api/session`, {
         sessionToken: token,
       });
       const responseData = response.data;
