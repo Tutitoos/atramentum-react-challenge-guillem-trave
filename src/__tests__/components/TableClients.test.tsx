@@ -51,7 +51,7 @@ describe("Given a TableClients component", () => {
       expect(actived).toBeInTheDocument();
       expect(actions).toBeInTheDocument();
       expect(resultTableActionEdit).toBeInTheDocument();
-      expect(id.textContent).toStrictEqual(`#${expectedClient.id}`);
+      expect(id.textContent).toStrictEqual(`${expectedClient.id}`);
       expect(name.textContent).toStrictEqual(expectedClient.contactName);
       expect(email.textContent).toStrictEqual(expectedClient.email);
       expect(sector.textContent).toStrictEqual(`${expectedClient.sector.id}`);
