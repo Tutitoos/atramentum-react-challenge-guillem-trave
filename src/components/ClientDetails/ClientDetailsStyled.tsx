@@ -3,11 +3,11 @@ import styled from "styled-components";
 const ClientDetailsStyled = styled.div`
   background-color: ${(props) => props.theme.colors.light};
   border-radius: 10px;
-  padding: 30px;
+  padding: 20px 40px;
   overflow: hidden;
   width: 100%;
-  min-width: 385px;
-  max-width: 385px;
+  min-width: 500px;
+  max-width: 500px;
   height: 500px;
 
   .card-head {
@@ -27,7 +27,7 @@ const ClientDetailsStyled = styled.div`
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: repeat(9, auto);
-    grid-column-gap: 60px;
+    grid-column-gap: 100px;
     grid-row-gap: 6px;
 
     div {
