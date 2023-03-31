@@ -23,8 +23,8 @@ const ClientDetails: React.FC<ClientDetailsProps> = ({ client }): JSX.Element =>
         </div>
         <div>
           <h3>Phone:</h3>{" "}
-          {client.phones.map((phone) => (
-            <span key={phone}>{phone}</span>
+          {client.phones.map((phone, index) => (
+            <span key={index}>{phone}</span>
           ))}
         </div>
         <div>

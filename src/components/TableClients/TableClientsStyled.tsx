@@ -36,9 +36,6 @@ const TableClientsStyled = styled.table`
     }
   }
 
-  tbody {
-  }
-
   tbody.data {
     background-color: ${(props) => props.theme.colors.light};
 
