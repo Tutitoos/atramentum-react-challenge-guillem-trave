@@ -23,9 +23,11 @@ const ClientDetails: React.FC<ClientDetailsProps> = ({ client }): JSX.Element =>
         </div>
         <div>
           <h3>Phone:</h3>{" "}
-          {client.phones.map((phone) => (
-            <span key={phone}>{phone}</span>
-          ))}
+          {client.phones.map((phone) => {
+            const findIndex = client.phones.find((phoneData) => phoneData === phone);
+
+            return <span key={findIndex}>{phone}</span>;
+          })}
         </div>
         <div>
           <h3>Bank Account:</h3>

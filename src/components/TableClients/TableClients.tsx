@@ -1,3 +1,5 @@
+import { loadClientActionCreator } from "@/redux/features/clientSlice/clientSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import type { Client, Clients } from "@/types/clientTypes";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -8,9 +10,12 @@ interface TableClientsProps {
 }
 
 const TableClients: React.FC<TableClientsProps> = ({ clients }): JSX.Element => {
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const handleClientSelect = (client: Client) => {};
+  const handleClientSelect = (client: Client) => {
+    dispatch(loadClientActionCreator(client));
+  };
 
   const handleClientEdit = (id: number) => {
     router.push(`/client/${id}`);
@@ -33,7 +38,7 @@ const TableClients: React.FC<TableClientsProps> = ({ clients }): JSX.Element => 
       <tbody className="data">
         {clients.map((client) => (
           <tr key={client.id} onClick={() => handleClientSelect(client)}>
-            <td>#{client.id}</td>
+            <td>{client.id}</td>
             <td>{client.contactName}</td>
             <td>{client.email}</td>
             <td>{client.sector.id}</td>

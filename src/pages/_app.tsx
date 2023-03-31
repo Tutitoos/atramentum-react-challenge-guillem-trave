@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
 const DynamicLayout = dynamic(() => import("@/components/Layout/Layout"), {
-  ssr: true,
+  ssr: false,
 });
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {

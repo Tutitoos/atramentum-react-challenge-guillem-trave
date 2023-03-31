@@ -1,5 +1,5 @@
 import { HYDRATE } from "next-redux-wrapper";
-import { mockClient, mockClients } from "../../__mocks__/mockClients";
+import { mockClient, mockClients, mockClientsApiRaw } from "../../__mocks__/mockClients";
 import {
   clientInitialState,
   clientReducer,
@@ -29,7 +29,7 @@ describe("Given clientReducer", () => {
     test("Then it should return a new state with a copy of the client", () => {
       const expectedCurrentState: ClientState = { ...clientInitialState, clients: mockClients };
 
-      const loadClientsAction = loadClientsActionCreator(mockClients);
+      const loadClientsAction = loadClientsActionCreator(mockClientsApiRaw);
       const newState = clientReducer(expectedCurrentState, loadClientsAction);
 
       expect(newState).toStrictEqual(expectedCurrentState);
