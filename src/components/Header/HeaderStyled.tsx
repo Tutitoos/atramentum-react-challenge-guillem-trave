@@ -4,7 +4,7 @@ const HeaderStyled = styled.header`
   background-color: ${(props) => props.theme.colors.light};
   box-shadow: 0px 4px 4px 0px #0000000d;
   height: 70px;
-  width: 100vw;
+  min-width: 100%;
   padding: 20px 30px;
   display: flex;
   margin: 0 auto;

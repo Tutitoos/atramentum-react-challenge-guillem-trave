@@ -5,12 +5,13 @@ const TableClientsStyled = styled.table`
   --padding-border: 30px;
 
   background-color: ${(props) => props.theme.colors.light};
-  border-collapse: collapse;
+  border-radius: 10px;
+  padding: 0 30px;
   width: 100%;
   min-width: 780px;
   max-width: 780px;
-  padding: 0 30px;
-  border-radius: 10px;
+  overflow: hidden;
+  border-collapse: collapse;
 
   thead {
     height: 50px;
@@ -31,7 +32,7 @@ const TableClientsStyled = styled.table`
       color: ${(props) => props.theme.colors.textColor.gray};
       padding: 8px;
       text-align: left;
-      font-weight: 400;
+      font-weight: 500;
     }
   }
 
