@@ -1,4 +1,4 @@
-import type { Clients, ClientsApiRaw } from "@/types/clientTypes";
+import type { ClientsApiRaw } from "@/types/clientTypes";
 import axios from "axios";
 
 interface GetClientsProps {

@@ -1,4 +1,4 @@
-import type { Client, ClientApi, Clients, ClientsApiRaw } from "@/types/clientTypes";
+import type { Client, Clients, ClientsApiRaw } from "@/types/clientTypes";
 
 export const mockClients: Clients = [
   {
