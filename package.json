@@ -16,15 +16,18 @@
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-router-dom": "^6.10.0",
     "styled-components": "^5.3.9"
   },
   "devDependencies": {
+    "@remix-run/router": "^1.5.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
     "@types/node": "18.15.11",
     "@types/react": "18.0.31",
     "@types/react-dom": "18.0.11",
+    "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.26",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
