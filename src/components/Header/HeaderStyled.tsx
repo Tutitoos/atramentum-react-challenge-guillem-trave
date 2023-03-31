@@ -12,6 +12,9 @@ const HeaderStyled = styled.header`
 
   .header {
     &__title {
+      max-width: 1920px;
+      min-width: 1920px;
+      margin: 0 auto;
       font-weight: 500;
       font-size: 22px;
       color: ${(props) => props.theme.colors.textColor.blue};

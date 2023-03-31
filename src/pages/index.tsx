@@ -6,8 +6,10 @@ import { mockClient, mockClients } from "@/__mocks__/mockClients";
 const HomePage = (): JSX.Element => {
   return (
     <HomePageStyled>
-      <TableClients clients={mockClients} />
-      <ClientDetails client={mockClient} />
+      <div>
+        <TableClients clients={mockClients} />
+        <ClientDetails client={mockClient} />
+      </div>
     </HomePageStyled>
   );
 };

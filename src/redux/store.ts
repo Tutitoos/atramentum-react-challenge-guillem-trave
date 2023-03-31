@@ -1,11 +1,14 @@
+import type { ClientState } from "@/types/clientTypes";
+import type { UiState } from "@/types/uiTypes";
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import thunk from "redux-thunk";
 import { clientReducer } from "./features/clientSlice/clientSlice";
 import { uiReducer } from "./features/uiSlice/uiSlice";
 
-export const makeStore = () =>
+export const makeStore = (preloadedState?: { [x: string]: UiState | ClientState }) =>
   configureStore({
+    preloadedState,
     reducer: {
       ui: uiReducer,
       client: clientReducer,
