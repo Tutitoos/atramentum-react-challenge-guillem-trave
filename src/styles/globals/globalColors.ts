@@ -1,6 +1,7 @@
 const globalColors = {
   light: "#FFFFFF",
   blueLigth: "#F2F9FF",
+  gray: "#EBEFF2",
   backgoundColor: {
     gray: "#F5F5F5",
   },
@@ -9,7 +10,7 @@ const globalColors = {
     blue: "#109CF1",
     gray: "#69686A",
   },
-  feedback: {
+  feedbackColor: {
     success: "#70ff87",
     error: "#ED4245",
   },
