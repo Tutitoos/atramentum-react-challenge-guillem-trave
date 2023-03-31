@@ -1,15 +1,15 @@
+import ClientDetails from "@/components/ClientDetails/ClientDetails";
 import TableClients from "@/components/TableClients/TableClients";
-import { mockClients } from "@/__mocks__/mockClients";
+import HomePageStyled from "@/styles/pages/HomePageStyled";
+import { mockClient, mockClients } from "@/__mocks__/mockClients";
 
-export default function Home() {
+const HomePage = (): JSX.Element => {
   return (
-    <section
-      style={{
-        textAlign: "center",
-      }}
-    >
-      List of customers
+    <HomePageStyled>
       <TableClients clients={mockClients} />
-    </section>
+      <ClientDetails client={mockClient} />
+    </HomePageStyled>
   );
-}
+};
+
+export default HomePage;

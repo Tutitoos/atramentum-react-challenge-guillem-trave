@@ -20,9 +20,8 @@ export const mockClients: Clients = [
       name: "Banco Central",
     },
     deleted: true,
-    actived: true,
+    actived: false,
   },
-
   {
     id: 2,
     email: "cliente2@example.com",
@@ -42,7 +41,7 @@ export const mockClients: Clients = [
       name: "Banco Internacional",
     },
     deleted: false,
-    actived: false,
+    actived: true,
   },
   {
     id: 5,
@@ -63,7 +62,7 @@ export const mockClients: Clients = [
       name: "Banco Nacional",
     },
     deleted: true,
-    actived: false,
+    actived: true,
   },
 ];
 
