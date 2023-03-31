@@ -4,5 +4,5 @@ import "styled-components";
 type Globals = typeof globals;
 
 declare module "styled-components" {
-  export type DefaultTheme = Globals;
+  export interface DefaultTheme extends Globals {}
 }
