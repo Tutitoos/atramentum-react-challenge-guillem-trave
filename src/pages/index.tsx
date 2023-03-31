@@ -1,3 +1,6 @@
+import TableClients from "@/components/TableClients/TableClients";
+import { mockClients } from "@/__mocks__/mockClients";
+
 export default function Home() {
   return (
     <section
@@ -6,6 +9,7 @@ export default function Home() {
       }}
     >
       List of customers
+      <TableClients clients={mockClients} />
     </section>
   );
 }
