@@ -21,3 +21,8 @@ export interface Client {
 }
 
 export type Clients = Client[];
+
+export interface ClientState {
+  clients: Clients;
+  client: Client;
+}
