@@ -99,3 +99,16 @@ export interface ClientApi {
   lastModifiedBy: string;
   lastModifiedDate: string;
 }
+
+export interface ClientUpdate {
+  email: string;
+  phone1: string | null;
+  phone2: string | null;
+  contactName: string;
+  sectorId: number | null;
+  customerCategoryId: number;
+  preferredCompanyBankAccountId: number | null;
+  deleted: boolean;
+  activated: boolean;
+  observations: string;
+}

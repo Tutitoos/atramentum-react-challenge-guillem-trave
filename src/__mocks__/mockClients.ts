@@ -1,4 +1,4 @@
-import type { Client, Clients, ClientsApiRaw } from "@/types/clientTypes";
+import type { Client, ClientApi, Clients, ClientsApiRaw } from "@/types/clientTypes";
 
 export const mockClients: Clients = [
   {
@@ -197,3 +197,5 @@ export const mockClientsApiRaw: ClientsApiRaw = {
   ],
   objectType: "CustomerDTOPagedList",
 };
+
+export const mockClientApiRaw: ClientApi = mockClientsApiRaw.content[0];
