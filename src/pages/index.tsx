@@ -1,7 +1,6 @@
 import ClientDetails from "@/components/ClientDetails/ClientDetails";
 import TableClients from "@/components/TableClients/TableClients";
 import useApi from "@/hooks/useApi";
-import useSession from "@/hooks/useSession";
 import { loadClientsActionCreator } from "@/redux/features/clientSlice/clientSlice";
 import { hideLoadingActionCreator, showLoadingActionCreator } from "@/redux/features/uiSlice/uiSlice";
 import { useAppSelector } from "@/redux/hooks";
