@@ -29,7 +29,7 @@ describe("Given clientReducer", () => {
     test("Then it should return a new state with a copy of the client", () => {
       const expectedCurrentState: ClientState = { ...clientInitialState, clients: mockClients };
 
-      const loadClientsAction = loadClientsActionCreator(mockClientsApiRaw);
+      const loadClientsAction = loadClientsActionCreator(mockClients);
       const newState = clientReducer(expectedCurrentState, loadClientsAction);
 
       expect(newState).toStrictEqual(expectedCurrentState);
