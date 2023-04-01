@@ -26,10 +26,13 @@ export default HomePage;
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async () => {
   const { getSession, getToken, setToken } = useSession();
+
   let token = await getToken();
   if (!token) {
     const session = await getSession();
-    if (session) token = await setToken(session.token);
+    if (session) {
+      token = await setToken(session.token);
+    }
   }
 
   if (token) {

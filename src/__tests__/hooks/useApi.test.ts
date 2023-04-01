@@ -10,7 +10,7 @@ afterEach(() => {
 
 describe("Given a useSession hook", () => {
   describe("When it's function getClients is called", () => {
-    test("Then it should return clients", async () => {
+    test("Then it should return clients list", async () => {
       const {
         result: { current },
       } = renderHook(() => useApi(mockSessionToken));
@@ -23,7 +23,7 @@ describe("Given a useSession hook", () => {
       expect(response).toEqual(mockClientsApiRaw);
     });
 
-    test("Then it should return without clients", async () => {
+    test("Then it should return without clients list", async () => {
       const {
         result: { current },
       } = renderHook(() => useApi(mockSessionToken));
