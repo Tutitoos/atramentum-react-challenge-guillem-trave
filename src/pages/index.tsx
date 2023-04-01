@@ -7,6 +7,7 @@ import { hideLoadingActionCreator, showLoadingActionCreator } from "@/redux/feat
 import { useAppSelector } from "@/redux/hooks";
 import { wrapper } from "@/redux/store";
 import HomePageStyled from "@/styles/pages/HomePageStyled";
+import { parseClients } from "@/utils/parseClient";
 import { GetServerSideProps } from "next/types";
 
 const HomePage = (): JSX.Element => {
@@ -24,24 +25,13 @@ const HomePage = (): JSX.Element => {
 
 export default HomePage;
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async () => {
-  const { getSession, getToken, setToken } = useSession();
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
+  const { getClients } = useApi();
 
-  let token = await getToken();
-  if (!token) {
-    const session = await getSession();
-    if (session) {
-      token = await setToken(session.token);
-    }
-  }
-
-  if (token) {
-    const { getClients } = useApi(token);
-    store.dispatch(showLoadingActionCreator());
-    const response = await getClients({});
-    if (response) store.dispatch(loadClientsActionCreator(response));
-    store.dispatch(hideLoadingActionCreator());
-  }
+  store.dispatch(showLoadingActionCreator());
+  const response = await getClients({});
+  if (response) store.dispatch(loadClientsActionCreator(parseClients(response.content)));
+  store.dispatch(hideLoadingActionCreator());
 
   return {
     props: {},
