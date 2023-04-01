@@ -37,7 +37,7 @@ const TableClients: React.FC<TableClientsProps> = ({ clients }): JSX.Element => 
       </thead>
       <tbody className="data">
         {clients.map((client) => (
-          <tr key={client.id} onClick={() => handleClientSelect(client)}>
+          <tr key={clients.indexOf(client)} onClick={() => handleClientSelect(client)}>
             <td>{client.id}</td>
             <td>{client.contactName}</td>
             <td>{client.email}</td>

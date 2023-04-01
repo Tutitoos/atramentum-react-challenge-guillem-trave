@@ -89,7 +89,7 @@ describe("Given a ClientDetails component", () => {
       expect(resultTitleObservations.textContent).toStrictEqual(expectedTitleObservations);
     });
 
-    test("Then it should show a card client details", () => {
+    test("Then it should show a card with a client details", () => {
       const expectedClient = mockClient;
       const expectedClientBankAccount = `${expectedClient.bankAccount.id} - ${expectedClient.bankAccount.name}`;
       const expectedClientSector = `${expectedClient.sector.id} - ${expectedClient.sector.name}`;
@@ -135,7 +135,7 @@ describe("Given a ClientDetails component", () => {
       expect(resultClientObservations.textContent).toStrictEqual(expectedClient.observations);
     });
 
-    test("Then it should show a card client details, Actived (Yes) and Deleted (No)", () => {
+    test("Then it should show a card with client details, with these data Actived (Yes) and Deleted (No)", () => {
       const expectedClientActived = "Yes";
       const expectedClientDeleted = "No";
 

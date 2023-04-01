@@ -47,8 +47,8 @@ describe("Given clientReducer", () => {
     });
   });
 
-  describe("When it recieves an initial state with an empty film and '__NEXT_REDUX_WRAPPER_HYDRATE__' action", () => {
-    test("Then it should return a new state with a copy of the film list", () => {
+  describe("When it recieves an initial state with an empty client and '__NEXT_REDUX_WRAPPER_HYDRATE__' action", () => {
+    test("Then it should return a new state with a copy of the client list", () => {
       const expectedCurrentState: ClientState = clientInitialState;
 
       const hydrateAction = hydrate(expectedCurrentState, {
