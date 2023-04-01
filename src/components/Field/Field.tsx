@@ -2,11 +2,19 @@ import FieldStyled from "./FieldStyled";
 
 type FieldGeneric =
   | {
-      type: "TEXT" | "EMAIL" | "PASSWORD" | "TEL" | "CHECKBOX";
+      type: "TEXT" | "EMAIL" | "PASSWORD" | "TEL";
       onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
       styles?: {
         className?: string;
       };
+    }
+  | {
+      type: "CHECKBOX";
+      onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+      styles?: {
+        className?: string;
+      };
+      checked?: boolean;
     }
   | {
       type: "TEXTAREA";
@@ -34,6 +42,7 @@ export interface FieldProps {
   placeholder?: string;
   required?: boolean;
   autoComplete?: "off" | "on";
+  value?: string;
 }
 
 const Field: React.FC<FieldProps> = ({
@@ -43,6 +52,7 @@ const Field: React.FC<FieldProps> = ({
   placeholder,
   required = false,
   autoComplete = "off",
+  value = "",
 }): JSX.Element => {
   return (
     <FieldStyled className="field" fieldType={field.type}>
@@ -58,6 +68,7 @@ const Field: React.FC<FieldProps> = ({
           aria-label={name}
           autoComplete={autoComplete}
           required={required}
+          defaultValue={value}
         />
       )}
       {field.type !== "TEXTAREA" && (
@@ -72,6 +83,8 @@ const Field: React.FC<FieldProps> = ({
               aria-label={name}
               autoComplete={autoComplete}
               required={required}
+              defaultValue={value}
+              defaultChecked={field.type === "CHECKBOX" ? field?.checked : false}
             />
           )}
           {field.type === "NUMBER" && (
@@ -86,6 +99,7 @@ const Field: React.FC<FieldProps> = ({
               required={required}
               min={field.min}
               max={field.max}
+              defaultValue={value}
             />
           )}
         </>
