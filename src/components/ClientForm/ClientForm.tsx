@@ -26,8 +26,7 @@ const ClientForm: React.FC<{
       observations: formData.observations,
     };
 
-    const res = await updateClient(client.id, newClient);
-    console.log(res);
+    await updateClient(client.id, newClient);
   };
 
   return (
