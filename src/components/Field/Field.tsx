@@ -34,6 +34,8 @@ export interface FieldProps {
   placeholder?: string;
   required?: boolean;
   autoComplete?: "off" | "on";
+  value?: string;
+  checked?: boolean;
 }
 
 const Field: React.FC<FieldProps> = ({
@@ -43,6 +45,8 @@ const Field: React.FC<FieldProps> = ({
   placeholder,
   required = false,
   autoComplete = "off",
+  value = "",
+  checked = false,
 }): JSX.Element => {
   return (
     <FieldStyled className="field" fieldType={field.type}>
@@ -58,6 +62,7 @@ const Field: React.FC<FieldProps> = ({
           aria-label={name}
           autoComplete={autoComplete}
           required={required}
+          defaultValue={value}
         />
       )}
       {field.type !== "TEXTAREA" && (
@@ -72,6 +77,8 @@ const Field: React.FC<FieldProps> = ({
               aria-label={name}
               autoComplete={autoComplete}
               required={required}
+              defaultValue={value}
+              defaultChecked={field.type === "CHECKBOX" ? checked : false}
             />
           )}
           {field.type === "NUMBER" && (
@@ -86,6 +93,7 @@ const Field: React.FC<FieldProps> = ({
               required={required}
               min={field.min}
               max={field.max}
+              defaultValue={value}
             />
           )}
         </>

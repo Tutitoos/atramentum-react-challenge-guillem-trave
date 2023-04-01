@@ -1,4 +1,5 @@
 import ClientForm from "@/components/ClientForm/ClientForm";
+import { mockClient } from "@/__mocks__/mockClients";
 import renderWithProviders from "@/__mocks__/renderWithProviders";
 import { screen } from "@testing-library/react";
 
@@ -17,7 +18,7 @@ describe("Given a ClientForm component", () => {
       const expectedInput10 = "observations";
       const expectedButton = "Save";
 
-      renderWithProviders(<ClientForm />);
+      renderWithProviders(<ClientForm client={mockClient} />);
 
       const resultField1 = screen.queryByLabelText(expectedInput1) as HTMLInputElement;
       const resultField2 = screen.queryByLabelText(expectedInput2) as HTMLInputElement;
