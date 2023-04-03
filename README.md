@@ -1,38 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Atramentum - Prueba Técnica
 
-## Getting Started
+¡Claro! Atramentum es un proyecto que permite gestionar los clientes de una empresa de manera más eficiente. Con esta aplicación, puedes ver una lista de todos tus clientes en una pantalla, con información como su número de teléfono, correo electrónico y otras cosas importantes. También puedes editar los detalles de cada cliente individualmente, por ejemplo, si necesitas actualizar su dirección de correo electrónico o su número de teléfono.
 
-First, run the development server:
+## Pantallas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+### Listado de Clientes
+
+Se muestra el listado de clientes en un formato conveniente para el usuario. Como no se conoce la lógica de negocio y lo que podría ser más importante para cada uno de los ámbitos de la empresa, se ha diseñado una interfaz amigable y fácil de usar que permite visualizar los elementos de forma clara.
+
+Los datos que se han utilizado del cliente son: id, phone1, phone2, email, customerCategoryId, observations, preferredCompanyBankAccountId, deleted, activated, sectorId.
+
+### Edición de Cliente
+
+Al hacer clic en un cliente del listado, se accede a una página de edición del cliente. Se han mostrado varias relaciones del cliente, tales como sus números de teléfono, correo electrónico, categoría de cliente, observaciones, cuenta bancaria preferida, entre otros. Aunque no es necesario cubrir todas las relaciones, se han mostrado varias para demostrar cómo gestionar diversas llamadas.
+
+## Tecnologías utilizadas
+
+- Next.js
+- Jest
+- Testing-library
+- Redux (Toolkit)
+- Next-Redux-Wrapper
+- Styled-components
+- ESLint
+- Lint-staged
+- Husky
+- GitHub (Workflows, Actions)
+- SonarCloud
+
+## Instrucciones de instalación y uso
+
+1. Clonar el repositorio
+2. Ejecutar `npm install` para instalar las dependencias
+3. Crea un archivo `.env` con las siguientes variables de entorno:
+
+```env
+NEXT_PUBLIC_WEB_URL="<URL de la página web. Ejemplo: http://localhost:3000>"
+NEXT_PUBLIC_API_URL="<URL de la API. Ejemplo: http://localhost:8000/api>"
+NEXT_PUBLIC_ADMIN_USERNAME="<Nombre de usuario del administrador.>"
+NEXT_PUBLIC_ADMIN_PASSWORD="<Contraseña del administrador.>"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Ejecutar `npm run dev` para iniciar la aplicación en modo desarrollo
+5. Abrir [http://localhost:3000](http://localhost:3000) en un navegador web para ver la aplicación
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Autor
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Este proyecto fue desarrollado por Guillem Travé Font.
