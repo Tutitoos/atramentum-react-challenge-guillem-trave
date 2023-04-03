@@ -1,5 +1,6 @@
 import useApi from "@/hooks/useApi";
-import { Client, ClientUpdate } from "@/types/clientTypes";
+import { Client, ClientApi } from "@/types/clientTypes";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import Field from "../Field/Field";
 import ClientFormStyled from "./ClientFormStyled";
@@ -7,27 +8,33 @@ import ClientFormStyled from "./ClientFormStyled";
 const ClientForm: React.FC<{
   client: Client;
 }> = ({ client }): JSX.Element => {
-  const { updateClient } = useApi();
+  const { updateClient, getClient } = useApi();
+  const router = useRouter();
+
   const [formData, setFormData] = useState<Client>(client);
 
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
 
-    const newClient: ClientUpdate = {
-      contactName: formData.contactName,
-      email: formData.email,
-      phone1: formData.phones[0],
-      phone2: formData.phones[1],
-      preferredCompanyBankAccountId: formData.bankAccount.id,
-      customerCategoryId: formData.category.id,
-      sectorId: formData.sector.id,
-      deleted: formData.deleted,
-      activated: formData.actived,
-      observations: formData.observations,
-    };
+    const oldClient = await getClient(String(client.id));
+    if (oldClient) {
+      const newClient: ClientApi = {
+        ...oldClient,
+        contactName: formData.contactName,
+        email: formData.email,
+        phone1: formData.phones[0],
+        phone2: formData.phones[1],
+        preferredCompanyBankAccountId: formData.bankAccount.id,
+        customerCategoryId: formData.category.id,
+        sectorId: formData.sector.id,
+        deleted: formData.deleted,
+        activated: formData.actived,
+        observations: formData.observations,
+      };
 
-    const res = await updateClient(client.id, newClient);
-    console.log(res);
+      const response = await updateClient(client.id, newClient);
+      if (response) router.push("/");
+    }
   };
 
   return (
@@ -92,7 +99,6 @@ const ClientForm: React.FC<{
           }}
           label="Bank Account"
           name="bankAccount"
-          required={true}
           value={`${formData.bankAccount.id}`}
         />
         <Field
@@ -109,7 +115,6 @@ const ClientForm: React.FC<{
           }}
           label="Sector"
           name="sector"
-          required={true}
           value={`${formData.sector.id}`}
         />
         <Field
@@ -126,7 +131,6 @@ const ClientForm: React.FC<{
           }}
           label="Category"
           name="category"
-          required={true}
           value={`${formData.category.id}`}
         />
         <Field
