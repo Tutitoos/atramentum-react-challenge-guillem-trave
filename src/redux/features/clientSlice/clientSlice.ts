@@ -7,27 +7,7 @@ import loadClient from "./reducers/loadClient";
 
 export const clientInitialState: ClientState = {
   clients: [],
-  client: {
-    id: 0,
-    email: "",
-    phones: [],
-    contactName: "",
-    sector: {
-      id: 0,
-      name: "",
-    },
-    category: {
-      id: 0,
-      name: "",
-    },
-    observations: "",
-    bankAccount: {
-      id: 0,
-      name: "",
-    },
-    deleted: false,
-    actived: false,
-  },
+  client: null,
 };
 
 const clientSlice = createSlice({

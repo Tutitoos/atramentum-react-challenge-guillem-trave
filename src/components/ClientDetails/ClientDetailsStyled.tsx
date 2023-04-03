@@ -1,6 +1,59 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const ClientDetailsStyled = styled.div`
+interface ClientDetailsStyledProps {
+  isClient: boolean;
+}
+
+const ClientExist = css`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: repeat(9, auto);
+  grid-column-gap: 100px;
+  grid-row-gap: 6px;
+
+  div {
+    margin-bottom: 10px;
+
+    h3 {
+      color: ${(props) => props.theme.colors.textColor.default};
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0 0 5px;
+    }
+
+    span,
+    p {
+      color: ${(props) => props.theme.colors.textColor.default};
+      font-size: 16px;
+    }
+
+    &:nth-child(4) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &:first-child {
+      grid-column: 1 / span 2;
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+    }
+
+    &:last-child {
+      grid-column: 1 / span 2;
+    }
+  }
+`;
+
+const ClientNoExist = css`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+`;
+
+const ClientDetailsStyled = styled.div<ClientDetailsStyledProps>`
   background-color: ${(props) => props.theme.colors.light};
   border-radius: 10px;
   padding: 20px 40px;
@@ -24,44 +77,8 @@ const ClientDetailsStyled = styled.div`
   }
 
   .card-body {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: repeat(9, auto);
-    grid-column-gap: 100px;
-    grid-row-gap: 6px;
-
-    div {
-      margin-bottom: 10px;
-
-      h3 {
-        color: ${(props) => props.theme.colors.textColor.default};
-        font-size: 18px;
-        font-weight: 500;
-        margin: 0 0 5px;
-      }
-
-      span,
-      p {
-        color: ${(props) => props.theme.colors.textColor.default};
-        font-size: 16px;
-      }
-
-      &:nth-child(4) {
-        display: flex;
-        flex-direction: column;
-      }
-
-      &:first-child {
-        grid-column: 1 / span 2;
-        display: flex;
-        flex-direction: row;
-        gap: 12px;
-      }
-
-      &:last-child {
-        grid-column: 1 / span 2;
-      }
-    }
+    ${(props) => props.isClient && ClientExist};
+    ${(props) => !props.isClient && ClientNoExist};
   }
 `;
 

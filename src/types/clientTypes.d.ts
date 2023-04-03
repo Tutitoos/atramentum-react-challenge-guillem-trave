@@ -3,19 +3,10 @@ export interface Client {
   email: string;
   phones: string[];
   contactName: string;
-  sector: {
-    id: number;
-    name: string;
-  };
-  category: {
-    id: number;
-    name: string;
-  };
+  sectorId: number;
+  categoryId: number;
   observations: string;
-  bankAccount: {
-    id: number;
-    name: string;
-  };
+  bankAccountId: number;
   deleted: boolean;
   actived: boolean;
 }
@@ -24,7 +15,7 @@ export type Clients = Client[];
 
 export interface ClientState {
   clients: Clients;
-  client: Client;
+  client: Client | null;
 }
 
 export interface Session {
