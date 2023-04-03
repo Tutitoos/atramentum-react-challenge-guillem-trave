@@ -1,3 +1,9 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Tutitoos_atramentum-react-challenge-guillem-trave&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Tutitoos_atramentum-react-challenge-guillem-trave)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Tutitoos_atramentum-react-challenge-guillem-trave&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Tutitoos_atramentum-react-challenge-guillem-trave)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=Tutitoos_atramentum-react-challenge-guillem-trave&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=Tutitoos_atramentum-react-challenge-guillem-trave)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=Tutitoos_atramentum-react-challenge-guillem-trave&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=Tutitoos_atramentum-react-challenge-guillem-trave)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Tutitoos_atramentum-react-challenge-guillem-trave&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Tutitoos_atramentum-react-challenge-guillem-trave)
+
 # Atramentum - Prueba Técnica
 
 ¡Claro! Atramentum es un proyecto que permite gestionar los clientes de una empresa de manera más eficiente. Con esta aplicación, puedes ver una lista de todos tus clientes en una pantalla, con información como su número de teléfono, correo electrónico y otras cosas importantes. También puedes editar los detalles de cada cliente individualmente, por ejemplo, si necesitas actualizar su dirección de correo electrónico o su número de teléfono.
