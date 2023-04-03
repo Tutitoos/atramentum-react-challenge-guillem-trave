@@ -24,5 +24,26 @@ describe("Given a Layout component", () => {
       expect(resultBodyText).toBeInTheDocument();
       expect(resultBodyText).toHaveTextContent(expectedBodyText);
     });
+
+    test("Then it should show a loader", async () => {
+      const expectedTestId = "spinner";
+
+      renderWithProviders(
+        <Layout>
+          <span>Test content</span>
+        </Layout>,
+        {
+          preloadedState: {
+            ui: {
+              isLoading: true,
+            },
+          },
+        }
+      );
+
+      const result = screen.queryByTestId(expectedTestId) as HTMLElement;
+
+      expect(result).toBeInTheDocument();
+    });
   });
 });
