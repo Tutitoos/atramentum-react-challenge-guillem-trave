@@ -8,7 +8,7 @@ import { GetServerSideProps } from "next/types";
 import { useAppSelector } from "@/redux/hooks";
 import { parseClient } from "@/utils/parseClient";
 
-const ClientPage = (): JSX.Element => {
+const ClientFormPage = (): JSX.Element => {
   const client = useAppSelector((state) => state.client.client);
 
   return (
@@ -19,7 +19,7 @@ const ClientPage = (): JSX.Element => {
   );
 };
 
-export default ClientPage;
+export default ClientFormPage;
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
   const { id } = ctx.query as {

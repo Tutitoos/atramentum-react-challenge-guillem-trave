@@ -40,6 +40,7 @@ const useApi = () => {
   };
 
   const getClient = async (id: string): Promise<ClientApi | null> => {
+    if (!id?.length) return null;
     const token = await getToken();
 
     try {
