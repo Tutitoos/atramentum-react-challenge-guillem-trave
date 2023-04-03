@@ -37,13 +37,47 @@ const ClientForm: React.FC<{
     }
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { type, name, value } = event.target;
+
+    let newFormData: Client = { ...formData, phones: [...formData.phones] };
+
+    if (type === "tel") {
+      if (name === "phonePrimary") newFormData.phones[0] = value;
+      if (name === "phoneSecondary") newFormData.phones[1] = value;
+    }
+
+    if (["text", "textarea", "email"].includes(type)) {
+      if (name === "name") newFormData.contactName = value;
+      if (name === "email") newFormData.email = value;
+      if (name === "observations") newFormData.observations = value;
+    }
+
+    if (type === "number") {
+      const { valueAsNumber } = event.target as unknown as HTMLInputElement;
+
+      if (name === "bankAccount") newFormData.bankAccountId = valueAsNumber;
+      if (name === "sector") newFormData.sectorId = valueAsNumber;
+      if (name === "category") newFormData.categoryId = valueAsNumber;
+    }
+
+    if (type === "checkbox") {
+      const { checked } = event.target as unknown as HTMLInputElement;
+
+      if (name === "deleted") newFormData.deleted = checked;
+      if (name === "actived") newFormData.actived = checked;
+    }
+
+    setFormData({ ...newFormData });
+  };
+
   return (
     <ClientFormStyled className="form" onSubmit={handleSubmit}>
       <div className="form-fields">
         <Field
           field={{
             type: "TEXT",
-            onChange: ({ target }) => setFormData({ ...formData, contactName: target.value }),
+            onChange: handleChange,
           }}
           label="Name"
           name="name"
@@ -53,7 +87,7 @@ const ClientForm: React.FC<{
         <Field
           field={{
             type: "EMAIL",
-            onChange: ({ target }) => setFormData({ ...formData, email: target.value }),
+            onChange: handleChange,
           }}
           label="Email"
           name="email"
@@ -63,10 +97,7 @@ const ClientForm: React.FC<{
         <Field
           field={{
             type: "TEL",
-            onChange: ({ target }) => {
-              formData.phones[0] = target.value;
-              setFormData({ ...formData });
-            },
+            onChange: handleChange,
           }}
           label="Phone (Primary)"
           name="phonePrimary"
@@ -76,10 +107,7 @@ const ClientForm: React.FC<{
         <Field
           field={{
             type: "TEL",
-            onChange: ({ target }) => {
-              formData.phones[1] = target.value;
-              setFormData({ ...formData });
-            },
+            onChange: handleChange,
           }}
           label="Phone (Secondary)"
           name="phoneSecondary"
@@ -88,11 +116,7 @@ const ClientForm: React.FC<{
         <Field
           field={{
             type: "NUMBER",
-            onChange: ({ target }) =>
-              setFormData({
-                ...formData,
-                bankAccountId: target.valueAsNumber,
-              }),
+            onChange: handleChange,
           }}
           label="Bank Account"
           name="bankAccount"
@@ -101,11 +125,7 @@ const ClientForm: React.FC<{
         <Field
           field={{
             type: "NUMBER",
-            onChange: ({ target }) =>
-              setFormData({
-                ...formData,
-                sectorId: target.valueAsNumber,
-              }),
+            onChange: handleChange,
           }}
           label="Sector"
           name="sector"
@@ -114,11 +134,7 @@ const ClientForm: React.FC<{
         <Field
           field={{
             type: "NUMBER",
-            onChange: ({ target }) =>
-              setFormData({
-                ...formData,
-                categoryId: target.valueAsNumber,
-              }),
+            onChange: handleChange,
           }}
           label="Category"
           name="category"
@@ -128,7 +144,7 @@ const ClientForm: React.FC<{
           field={{
             type: "CHECKBOX",
             checked: formData.actived,
-            onChange: ({ target }) => setFormData({ ...formData, actived: target.checked }),
+            onChange: handleChange,
           }}
           label="Actived"
           name="actived"
@@ -137,7 +153,7 @@ const ClientForm: React.FC<{
           field={{
             type: "CHECKBOX",
             checked: formData.deleted,
-            onChange: ({ target }) => setFormData({ ...formData, deleted: target.checked }),
+            onChange: handleChange,
           }}
           label="Deleted"
           name="deleted"
@@ -149,7 +165,7 @@ const ClientForm: React.FC<{
               cols: 300,
               rows: 300,
             },
-            onChange: ({ target }) => setFormData({ ...client, observations: target.value }),
+            onChange: handleChange,
           }}
           label="Observations"
           name="observations"
