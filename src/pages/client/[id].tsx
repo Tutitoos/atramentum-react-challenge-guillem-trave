@@ -30,6 +30,14 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   store.dispatch(showLoadingActionCreator());
   const response = await getClient(id);
   if (response) store.dispatch(loadClientActionCreator(parseClient(response)));
+  else {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+    };
+  }
   store.dispatch(hideLoadingActionCreator());
 
   return {
