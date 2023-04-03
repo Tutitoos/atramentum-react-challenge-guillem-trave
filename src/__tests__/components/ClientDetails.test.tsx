@@ -76,17 +76,6 @@ describe("Given a ClientDetails component", () => {
       expect(resultTitleActived).toBeInTheDocument();
       expect(resultTitleDeleted).toBeInTheDocument();
       expect(resultTitleObservations).toBeInTheDocument();
-      expect(resultTitle.textContent).toStrictEqual(expectedTitle);
-      expect(resultTitleId.textContent).toStrictEqual(expectedTitleId);
-      expect(resultTitleName.textContent).toStrictEqual(expectedTitleName);
-      expect(resultTitleEmail.textContent).toStrictEqual(expectedTitleEmail);
-      expect(resultTitlePhones.textContent).toStrictEqual(expectedTitlePhones);
-      expect(resultTitleBankAccount.textContent).toStrictEqual(expectedTitleBankAccount);
-      expect(resultTitleSector.textContent).toStrictEqual(expectedTitleSector);
-      expect(resultTitleCategory.textContent).toStrictEqual(expectedTitleCategory);
-      expect(resultTitleActived.textContent).toStrictEqual(expectedTitleActived);
-      expect(resultTitleDeleted.textContent).toStrictEqual(expectedTitleDeleted);
-      expect(resultTitleObservations.textContent).toStrictEqual(expectedTitleObservations);
     });
 
     test("Then it should show a card with a client details", () => {

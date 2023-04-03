@@ -1,4 +1,4 @@
-import type { ClientsApiRaw, ClientApi, ClientUpdate } from "@/types/clientTypes";
+import type { ClientsApiRaw, ClientApi } from "@/types/clientTypes";
 import axios from "axios";
 import useSession from "./useSession";
 
@@ -56,7 +56,7 @@ const useApi = () => {
     }
   };
 
-  const updateClient = async (id: number, client: ClientUpdate): Promise<ClientApi | null> => {
+  const updateClient = async (id: number, client: ClientApi): Promise<ClientApi | null> => {
     const token = await getToken();
 
     try {

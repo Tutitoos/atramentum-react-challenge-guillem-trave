@@ -41,7 +41,7 @@ describe("Given a Field component", () => {
       expect(resultField).toHaveAttribute("required");
       expect(resultField).toHaveAttribute("autocomplete", expectedAutoComplete);
       expect(mockOnChange).toHaveBeenCalled();
-      expect(resultField.value).toStrictEqual(expectedValue);
+      expect(resultField).toHaveValue(expectedValue);
     });
 
     test("Then it should show on the screen a input field with is missing a props required and autoComplete", async () => {

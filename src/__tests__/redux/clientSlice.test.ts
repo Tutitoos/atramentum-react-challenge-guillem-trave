@@ -1,5 +1,5 @@
 import { HYDRATE } from "next-redux-wrapper";
-import { mockClient, mockClients, mockClientsApiRaw } from "../../__mocks__/mockClients";
+import { mockClient, mockClients } from "../../__mocks__/mockClients";
 import {
   clientInitialState,
   clientReducer,
