@@ -2,8 +2,12 @@ import Head from "next/head";
 import { PropsWithChildren } from "react";
 import Header from "../Header/Header";
 import LayoutStyled from "./LayoutStyled";
+import { useAppSelector } from "@/redux/hooks";
+import Loader from "../Loader/Loader";
 
 const Layout: React.FC<PropsWithChildren> = ({ children }): JSX.Element => {
+  const { isLoading } = useAppSelector((state) => state.ui);
+
   return (
     <LayoutStyled>
       <Head>
@@ -13,7 +17,10 @@ const Layout: React.FC<PropsWithChildren> = ({ children }): JSX.Element => {
         <link rel="icon" href="/favicon.jpg" />
       </Head>
       <Header />
-      <main>{children}</main>
+      <main>
+        {isLoading && <Loader />}
+        {!isLoading && children}
+      </main>
     </LayoutStyled>
   );
 };
