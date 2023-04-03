@@ -8,7 +8,7 @@
 
 ¡Claro! Atramentum es un proyecto que permite gestionar los clientes de una empresa de manera más eficiente. Con esta aplicación, puedes ver una lista de todos tus clientes en una pantalla, con información como su número de teléfono, correo electrónico y otras cosas importantes. También puedes editar los detalles de cada cliente individualmente, por ejemplo, si necesitas actualizar su dirección de correo electrónico o su número de teléfono.
 
-## Pantallas
+## Páginas
 
 ### Listado de Clientes
 
