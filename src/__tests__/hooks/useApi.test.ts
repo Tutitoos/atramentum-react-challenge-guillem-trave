@@ -1,6 +1,5 @@
 import useApi from "@/hooks/useApi";
 import { mockClientApiRaw, mockClientsApiRaw } from "@/__mocks__/mockClients";
-import { mockSessionToken } from "@/__mocks__/mockSession";
 import { renderHook } from "@testing-library/react";
 import axios from "axios";
 

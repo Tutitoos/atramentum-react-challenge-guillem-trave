@@ -7,7 +7,11 @@ import { PropsWithChildren } from "react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 
-const mockWrapper = (mockState?: { [x: string]: UiState | ClientState }) => {
+interface MockWrapper {
+  [x: string]: UiState | ClientState;
+}
+
+const mockWrapper = (mockState?: MockWrapper) => {
   const makeWrapper = ({ children }: PropsWithChildren) => {
     return (
       <Provider store={makeStore(mockState)}>

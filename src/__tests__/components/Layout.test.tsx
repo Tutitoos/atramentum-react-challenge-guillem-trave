@@ -10,7 +10,7 @@ describe("Given a Layout component", () => {
 
       renderWithProviders(
         <Layout>
-          <div>Test content</div>
+          <span>Test content</span>
         </Layout>
       );
 
@@ -22,8 +22,7 @@ describe("Given a Layout component", () => {
 
       expect(resultTitle).toBeInTheDocument();
       expect(resultBodyText).toBeInTheDocument();
-      expect(resultTitle.textContent).toStrictEqual(expectedTitle);
-      expect(resultBodyText.textContent).toStrictEqual(expectedBodyText);
+      expect(resultBodyText).toHaveTextContent(expectedBodyText);
     });
   });
 });

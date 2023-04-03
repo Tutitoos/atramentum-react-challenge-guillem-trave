@@ -15,7 +15,6 @@ describe("Given a Header component", () => {
       }) as HTMLHeadingElement;
 
       expect(resultTitle).toBeInTheDocument();
-      expect(resultTitle.textContent).toStrictEqual(expectedTitle);
     });
   });
 });

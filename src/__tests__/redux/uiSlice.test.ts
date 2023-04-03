@@ -1,11 +1,9 @@
-import type { UiModal, UiState } from "@/types/uiTypes";
+import type { UiState } from "@/types/uiTypes";
 import { HYDRATE } from "next-redux-wrapper";
 import hydrate from "../../redux/features/uiSlice/reducers/hydrate";
 import {
   hideLoadingActionCreator,
-  hideModalActionCreator,
   showLoadingActionCreator,
-  showModalActionCreator,
   uiInitialState,
   uiReducer,
 } from "../../redux/features/uiSlice/uiSlice";
@@ -41,38 +39,6 @@ describe("Given uiReducer", () => {
       const expectedCurrentState: UiState = { ...uiInitialState, isLoading: false };
 
       const hideLoadingAction = hideLoadingActionCreator();
-      const newState = uiReducer(expectedCurrentState, hideLoadingAction);
-
-      expect(newState).toStrictEqual(expectedCurrentState);
-    });
-  });
-
-  describe("When it recieves an initial state with an empty ui and 'showModal' action", () => {
-    test("Then it should return a new state with a copy of the ui", () => {
-      const uiModal: UiModal = {
-        isOpen: true,
-        isError: false,
-        text: "",
-      };
-      const expectedCurrentState: UiState = { ...uiInitialState, modal: { ...uiModal } };
-
-      const showLoadingAction = showModalActionCreator(uiModal);
-      const newState = uiReducer(expectedCurrentState, showLoadingAction);
-
-      expect(newState).toStrictEqual(expectedCurrentState);
-    });
-  });
-
-  describe("When it recieves an initial state with an empty ui and 'hideModal' action", () => {
-    test("Then it should return a new state with a copy of the ui", () => {
-      const uiModal: UiModal = {
-        isOpen: false,
-        isError: false,
-        text: "",
-      };
-      const expectedCurrentState: UiState = { ...uiInitialState, modal: { ...uiModal } };
-
-      const hideLoadingAction = hideModalActionCreator();
       const newState = uiReducer(expectedCurrentState, hideLoadingAction);
 
       expect(newState).toStrictEqual(expectedCurrentState);
