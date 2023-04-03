@@ -18,10 +18,11 @@ describe("Given a HomePage page", () => {
         name: expectedClientDetailsTitle,
       });
 
-      await getServerSideProps({} as GetServerSidePropsContext);
+      const serverSideProps = await getServerSideProps({} as GetServerSidePropsContext);
 
       expect(resultTableClients).toBeInTheDocument();
       expect(resultClientDetails).toBeInTheDocument();
+      expect(serverSideProps).toHaveProperty("props");
     });
   });
 });
