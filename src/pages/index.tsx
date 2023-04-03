@@ -24,7 +24,7 @@ const HomePage = (): JSX.Element => {
 
 export default HomePage;
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async () => {
   const { getClients } = useApi();
 
   store.dispatch(showLoadingActionCreator());
