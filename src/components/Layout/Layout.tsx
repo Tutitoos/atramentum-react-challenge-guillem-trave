@@ -1,12 +1,35 @@
 import Head from "next/head";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect } from "react";
 import Header from "../Header/Header";
 import LayoutStyled from "./LayoutStyled";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Loader from "../Loader/Loader";
+import { useRouter } from "next/router";
+import { hideLoadingActionCreator, showLoadingActionCreator } from "@/redux/features/uiSlice/uiSlice";
 
 const Layout: React.FC<PropsWithChildren> = ({ children }): JSX.Element => {
+  const dispatch = useAppDispatch();
   const { isLoading } = useAppSelector((state) => state.ui);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleStart = () => {
+      dispatch(showLoadingActionCreator());
+    };
+    const handleStop = () => {
+      dispatch(hideLoadingActionCreator());
+    };
+
+    router.events.on("routeChangeStart", handleStart);
+    router.events.on("routeChangeComplete", handleStop);
+    router.events.on("routeChangeError", handleStop);
+
+    return () => {
+      router.events.off("routeChangeStart", handleStart);
+      router.events.off("routeChangeComplete", handleStop);
+      router.events.off("routeChangeError", handleStop);
+    };
+  }, [dispatch, router]);
 
   return (
     <LayoutStyled>

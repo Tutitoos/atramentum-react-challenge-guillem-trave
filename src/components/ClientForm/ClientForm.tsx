@@ -24,9 +24,9 @@ const ClientForm: React.FC<{
         email: formData.email,
         phone1: formData.phones[0],
         phone2: formData.phones[1],
-        preferredCompanyBankAccountId: formData.bankAccount.id,
-        customerCategoryId: formData.category.id,
-        sectorId: formData.sector.id,
+        preferredCompanyBankAccountId: formData.bankAccountId,
+        customerCategoryId: formData.categoryId,
+        sectorId: formData.sectorId,
         deleted: formData.deleted,
         activated: formData.actived,
         observations: formData.observations,
@@ -91,15 +91,12 @@ const ClientForm: React.FC<{
             onChange: ({ target }) =>
               setFormData({
                 ...formData,
-                bankAccount: {
-                  ...formData.bankAccount,
-                  id: target.valueAsNumber,
-                },
+                bankAccountId: target.valueAsNumber,
               }),
           }}
           label="Bank Account"
           name="bankAccount"
-          value={`${formData.bankAccount.id}`}
+          value={`${formData.bankAccountId}`}
         />
         <Field
           field={{
@@ -107,15 +104,12 @@ const ClientForm: React.FC<{
             onChange: ({ target }) =>
               setFormData({
                 ...formData,
-                sector: {
-                  ...formData.sector,
-                  id: target.valueAsNumber,
-                },
+                sectorId: target.valueAsNumber,
               }),
           }}
           label="Sector"
           name="sector"
-          value={`${formData.sector.id}`}
+          value={`${formData.sectorId}`}
         />
         <Field
           field={{
@@ -123,15 +117,12 @@ const ClientForm: React.FC<{
             onChange: ({ target }) =>
               setFormData({
                 ...formData,
-                category: {
-                  ...formData.category,
-                  id: target.valueAsNumber,
-                },
+                categoryId: target.valueAsNumber,
               }),
           }}
           label="Category"
           name="category"
-          value={`${formData.category.id}`}
+          value={`${formData.categoryId}`}
         />
         <Field
           field={{

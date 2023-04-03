@@ -28,8 +28,13 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
   const { getClients } = useApi();
 
   store.dispatch(showLoadingActionCreator());
+
   const response = await getClients({});
-  if (response) store.dispatch(loadClientsActionCreator(parseClients(response.content)));
+  if (response) {
+    const clients = parseClients(response.content);
+    store.dispatch(loadClientsActionCreator(clients));
+  }
+
   store.dispatch(hideLoadingActionCreator());
 
   return {

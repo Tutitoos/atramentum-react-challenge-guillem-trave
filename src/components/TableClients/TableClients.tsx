@@ -4,6 +4,7 @@ import type { Client, Clients } from "@/types/clientTypes";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import TableClientsStyled from "./TableClientsStyled";
+import { hideLoadingActionCreator, showLoadingActionCreator } from "@/redux/features/uiSlice/uiSlice";
 
 interface TableClientsProps {
   clients: Clients;
@@ -14,7 +15,9 @@ const TableClients: React.FC<TableClientsProps> = ({ clients }): JSX.Element => 
   const router = useRouter();
 
   const handleClientSelect = (client: Client) => {
+    dispatch(showLoadingActionCreator());
     dispatch(loadClientActionCreator(client));
+    dispatch(hideLoadingActionCreator());
   };
 
   const handleClientEdit = (id: number) => {
@@ -41,8 +44,8 @@ const TableClients: React.FC<TableClientsProps> = ({ clients }): JSX.Element => 
             <td>{client.id}</td>
             <td>{client.contactName}</td>
             <td>{client.email}</td>
-            <td>{client.sector.id}</td>
-            <td>{client.category.id}</td>
+            <td>{client.sectorId}</td>
+            <td>{client.categoryId}</td>
             <td>{client.deleted ? "Yes" : "No"}</td>
             <td>{client.actived ? "Yes" : "No"}</td>
             <td>

@@ -13,8 +13,8 @@ const ClientFormPage = (): JSX.Element => {
 
   return (
     <ClientFormPageStyled>
-      <h2>Client {client.id}</h2>
-      <ClientForm client={client} />
+      <h2>Client {client?.id}</h2>
+      {client && <ClientForm client={client} />}
     </ClientFormPageStyled>
   );
 };
@@ -22,15 +22,16 @@ const ClientFormPage = (): JSX.Element => {
 export default ClientFormPage;
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps((store) => async (ctx) => {
+  const { getClient } = useApi();
+
   const { id } = ctx.query as {
     id: string;
   };
 
-  const { getClient } = useApi();
   store.dispatch(showLoadingActionCreator());
+
   const response = await getClient(id);
-  if (response) store.dispatch(loadClientActionCreator(parseClient(response)));
-  else {
+  if (!response) {
     return {
       redirect: {
         permanent: false,
@@ -38,6 +39,10 @@ export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps
       },
     };
   }
+
+  const client = parseClient(response);
+  store.dispatch(loadClientActionCreator(client));
+
   store.dispatch(hideLoadingActionCreator());
 
   return {

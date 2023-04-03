@@ -1,13 +1,8 @@
 import styled from "styled-components";
 
 const LoaderStyled = styled.div`
-  .spinner {
-    display: block;
-    position: fixed;
-    z-index: 1031;
-    top: 15px;
-    right: 15px;
-  }
+  display: flex;
+  justify-content: center;
 
   .spinner-icon {
     width: 42px;
