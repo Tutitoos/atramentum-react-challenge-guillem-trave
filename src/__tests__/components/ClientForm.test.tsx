@@ -2,7 +2,6 @@ import ClientForm from "@/components/ClientForm/ClientForm";
 import { mockClient } from "@/__mocks__/mockClients";
 import renderWithProviders from "@/__mocks__/renderWithProviders";
 import { screen, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
@@ -52,10 +51,10 @@ describe("Given a ClientForm component", () => {
       await fireEvent.change(resultField5, { target: { value: expectedInput5Value } });
       await fireEvent.change(resultField6, { target: { value: expectedInput6Value } });
       await fireEvent.change(resultField7, { target: { value: expectedInput7Value } });
-      await userEvent.click(resultField8);
-      await userEvent.click(resultField9);
+      await fireEvent.click(resultField8);
+      await fireEvent.click(resultField9);
       await fireEvent.change(resultField10, { target: { value: expectedInput10Value } });
-      await userEvent.click(resultButton);
+      await fireEvent.click(resultButton);
 
       expect(resultField1).toBeInTheDocument();
       expect(resultField2).toBeInTheDocument();

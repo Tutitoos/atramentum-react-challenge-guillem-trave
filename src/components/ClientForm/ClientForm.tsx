@@ -37,72 +37,51 @@ const ClientForm: React.FC<{
     }
   };
 
+  const updatePhoneNumber = (name: string, value: string, newFormData: Client) => {
+    if (name === "phonePrimary") newFormData.phones[0] = value;
+    if (name === "phoneSecondary") newFormData.phones[1] = value;
+    return newFormData;
+  };
+
+  const updateContactInfo = (name: string, value: string, newFormData: Client) => {
+    if (name === "name") newFormData.contactName = value;
+    if (name === "email") newFormData.email = value;
+    if (name === "observations") newFormData.observations = value;
+    return newFormData;
+  };
+
+  const updateNumberInfo = (name: string, valueAsNumber: number, newFormData: Client) => {
+    if (name === "bankAccount") newFormData.bankAccountId = valueAsNumber;
+    if (name === "category") newFormData.categoryId = valueAsNumber;
+    if (name === "sector") newFormData.sectorId = valueAsNumber;
+    return newFormData;
+  };
+
+  const updateCheckbox = (name: string, checked: boolean, newFormData: Client) => {
+    if (name === "deleted") newFormData.deleted = checked;
+    if (name === "actived") newFormData.actived = checked;
+    return newFormData;
+  };
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { type, name, value } = event.target;
     const { valueAsNumber, checked } = event.target as HTMLInputElement;
-    const newFormData: Client = { ...formData, phones: [...formData.phones] };
+    let newFormData: Client = { ...formData, phones: [...formData.phones] };
 
-    switch (type) {
-      case "tel": {
-        if (["phonePrimary", "phoneSecondary"].includes(name)) {
-          newFormData.phones[name === "phonePrimary" ? 0 : 1] = value;
-        }
-        break;
-      }
+    if (type === "tel") {
+      newFormData = updatePhoneNumber(name, value, newFormData);
+    }
 
-      case "text":
-      case "textarea":
-      case "email": {
-        switch (name) {
-          case "name":
-            newFormData.contactName = value;
-            break;
-          case "email":
-            newFormData.email = value;
-            break;
-          case "observations":
-            newFormData.observations = value;
-            break;
-          default:
-            break;
-        }
-        break;
-      }
+    if (["text", "textarea", "email"].includes(type)) {
+      newFormData = updateContactInfo(name, value, newFormData);
+    }
 
-      case "number": {
-        switch (name) {
-          case "bankAccount":
-            newFormData.bankAccountId = valueAsNumber;
-            break;
-          case "sector":
-            newFormData.sectorId = valueAsNumber;
-            break;
-          case "category":
-            newFormData.categoryId = valueAsNumber;
-            break;
-          default:
-            break;
-        }
-        break;
-      }
+    if (type === "number") {
+      newFormData = updateNumberInfo(name, valueAsNumber, newFormData);
+    }
 
-      case "checkbox": {
-        switch (name) {
-          case "deleted":
-            newFormData.deleted = checked;
-            break;
-          case "actived":
-            newFormData.actived = checked;
-            break;
-          default:
-            break;
-        }
-        break;
-      }
-
-      default: {
-        break;
-      }
+    if (type === "checkbox") {
+      newFormData = updateCheckbox(name, checked, newFormData);
     }
 
     setFormData(newFormData);
