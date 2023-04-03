@@ -54,8 +54,8 @@ describe("Given a TableClients component", () => {
       expect(id).toHaveTextContent(`${expectedClient.id}`);
       expect(name).toHaveTextContent(expectedClient.contactName);
       expect(email).toHaveTextContent(expectedClient.email);
-      expect(sector).toHaveTextContent(`${expectedClient.sector.id}`);
-      expect(category).toHaveTextContent(`${expectedClient.category.id}`);
+      expect(sector).toHaveTextContent(`${expectedClient.sectorId}`);
+      expect(category).toHaveTextContent(`${expectedClient.categoryId}`);
       expect(deleted).toHaveTextContent(expectedClient.deleted ? "Yes" : "No");
       expect(actived).toHaveTextContent(expectedClient.actived ? "Yes" : "No");
       expect(mockActionSelect).toHaveBeenCalled();

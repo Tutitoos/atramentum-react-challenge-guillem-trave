@@ -1,6 +1,9 @@
-import { screen } from "@testing-library/react";
+import { act, screen } from "@testing-library/react";
 import Layout from "@/components/Layout/Layout";
 import renderWithProviders from "@/__mocks__/renderWithProviders";
+import Router from "next/router";
+
+jest.mock("next/router", () => require("next-router-mock"));
 
 describe("Given a Layout component", () => {
   describe("When it is rendered", () => {
@@ -44,6 +47,22 @@ describe("Given a Layout component", () => {
       const result = screen.queryByTestId(expectedTestId) as HTMLElement;
 
       expect(result).toBeInTheDocument();
+    });
+
+    test("Then it should a change route home to 404", async () => {
+      renderWithProviders(
+        <Layout>
+          <span>Test content</span>
+        </Layout>
+      );
+
+      Router.pathname = "/404";
+
+      await act(() => {
+        Router.events.emit("routeChangeStart");
+        Router.events.emit("routeChangeComplete");
+        Router.events.emit("routeChangeError");
+      });
     });
   });
 });

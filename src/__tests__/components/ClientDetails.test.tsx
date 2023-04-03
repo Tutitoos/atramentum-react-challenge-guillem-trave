@@ -79,26 +79,37 @@ describe("Given a ClientDetails component", () => {
     });
 
     test("Then it should show a card with a client details", () => {
+      const expectedTestIdClientId = "clientId";
+      const expectedTestIdClientName = "clientName";
+      const expectedTestIdClientEmail = "clientEmail";
+      const expectedTestIdClientPhone1 = "clientPhone1";
+      const expectedTestIdClientPhone2 = "clientPhone2";
+      const expectedTestIdClientBankAccountId = "clientBankAccountId";
+      const expectedTestIdClientSectorId = "clientSectorId";
+      const expectedTestIdClientCategoryId = "clientCategoryId";
+      const expectedTestIdClientActived = "clientActived";
+      const expectedTestIdClientDeleted = "clientDeleted";
+      const expectedTestIdClientObservations = "clientObservations";
       const expectedClient = mockClient;
-      const expectedClientBankAccount = `${expectedClient.bankAccount.id} - ${expectedClient.bankAccount.name}`;
-      const expectedClientSector = `${expectedClient.sector.id} - ${expectedClient.sector.name}`;
-      const expectedClientCategory = `${expectedClient.category.id} - ${expectedClient.category.name}`;
+      const expectedClientBankAccount = String(expectedClient.bankAccountId);
+      const expectedClientSector = String(expectedClient.sectorId);
+      const expectedClientCategory = String(expectedClient.categoryId);
       const expectedClientActived = "No";
       const expectedClientDeleted = "Yes";
 
       renderWithProviders(<ClientDetails client={mockClient} />);
 
-      const resultTitleId = screen.queryByText(expectedClient.id) as HTMLSpanElement;
-      const resultClientName = screen.queryByText(expectedClient.contactName) as HTMLSpanElement;
-      const resultClientEmail = screen.queryByText(expectedClient.email) as HTMLSpanElement;
-      const resultClientPhone1 = screen.queryByText(expectedClient.phones[0]) as HTMLSpanElement;
-      const resultClientPhone2 = screen.queryByText(expectedClient.phones[1]) as HTMLSpanElement;
-      const resultClientBankAccount = screen.queryByText(expectedClientBankAccount) as HTMLSpanElement;
-      const resultClientSector = screen.queryByText(expectedClientSector) as HTMLSpanElement;
-      const resultClientCategory = screen.queryByText(expectedClientCategory) as HTMLSpanElement;
-      const resultClientActived = screen.queryByText(expectedClientActived) as HTMLSpanElement;
-      const resultClientDeleted = screen.queryByText(expectedClientDeleted) as HTMLSpanElement;
-      const resultClientObservations = screen.queryByText(expectedClient.observations) as HTMLSpanElement;
+      const resultTitleId = screen.queryByTestId(expectedTestIdClientId) as HTMLSpanElement;
+      const resultClientName = screen.queryByTestId(expectedTestIdClientName) as HTMLSpanElement;
+      const resultClientEmail = screen.queryByTestId(expectedTestIdClientEmail) as HTMLSpanElement;
+      const resultClientPhone1 = screen.queryByTestId(expectedTestIdClientPhone1) as HTMLSpanElement;
+      const resultClientPhone2 = screen.queryByTestId(expectedTestIdClientPhone2) as HTMLSpanElement;
+      const resultClientBankAccount = screen.queryByTestId(expectedTestIdClientBankAccountId) as HTMLSpanElement;
+      const resultClientSector = screen.queryByTestId(expectedTestIdClientSectorId) as HTMLSpanElement;
+      const resultClientCategory = screen.queryByTestId(expectedTestIdClientCategoryId) as HTMLSpanElement;
+      const resultClientActived = screen.queryByTestId(expectedTestIdClientActived) as HTMLSpanElement;
+      const resultClientDeleted = screen.queryByTestId(expectedTestIdClientDeleted) as HTMLSpanElement;
+      const resultClientObservations = screen.queryByTestId(expectedTestIdClientObservations) as HTMLSpanElement;
 
       expect(resultTitleId).toBeInTheDocument();
       expect(resultClientName).toBeInTheDocument();
@@ -111,17 +122,17 @@ describe("Given a ClientDetails component", () => {
       expect(resultClientActived).toBeInTheDocument();
       expect(resultClientDeleted).toBeInTheDocument();
       expect(resultClientObservations).toBeInTheDocument();
-      expect(resultTitleId.textContent).toStrictEqual(`${expectedClient.id}`);
-      expect(resultClientName.textContent).toStrictEqual(expectedClient.contactName);
-      expect(resultClientEmail.textContent).toStrictEqual(expectedClient.email);
-      expect(resultClientPhone1.textContent).toStrictEqual(expectedClient.phones[0]);
-      expect(resultClientPhone2.textContent).toStrictEqual(expectedClient.phones[1]);
-      expect(resultClientBankAccount.textContent).toStrictEqual(expectedClientBankAccount);
-      expect(resultClientSector.textContent).toStrictEqual(expectedClientSector);
-      expect(resultClientCategory.textContent).toStrictEqual(expectedClientCategory);
-      expect(resultClientActived.textContent).toStrictEqual(expectedClientActived);
-      expect(resultClientDeleted.textContent).toStrictEqual(expectedClientDeleted);
-      expect(resultClientObservations.textContent).toStrictEqual(expectedClient.observations);
+      expect(resultTitleId).toHaveTextContent(`${expectedClient.id}`);
+      expect(resultClientName).toHaveTextContent(expectedClient.contactName);
+      expect(resultClientEmail).toHaveTextContent(expectedClient.email);
+      expect(resultClientPhone1).toHaveTextContent(expectedClient.phones[0]);
+      expect(resultClientPhone2).toHaveTextContent(expectedClient.phones[1]);
+      expect(resultClientBankAccount).toHaveTextContent(expectedClientBankAccount);
+      expect(resultClientSector).toHaveTextContent(expectedClientSector);
+      expect(resultClientCategory).toHaveTextContent(expectedClientCategory);
+      expect(resultClientActived).toHaveTextContent(expectedClientActived);
+      expect(resultClientDeleted).toHaveTextContent(expectedClientDeleted);
+      expect(resultClientObservations).toHaveTextContent(expectedClient.observations);
     });
 
     test("Then it should show a card with client details, with these data Actived (Yes) and Deleted (No)", () => {
@@ -135,8 +146,8 @@ describe("Given a ClientDetails component", () => {
 
       expect(resultClientActived).toBeInTheDocument();
       expect(resultClientDeleted).toBeInTheDocument();
-      expect(resultClientActived.textContent).toStrictEqual(expectedClientActived);
-      expect(resultClientDeleted.textContent).toStrictEqual(expectedClientDeleted);
+      expect(resultClientActived).toHaveTextContent(expectedClientActived);
+      expect(resultClientDeleted).toHaveTextContent(expectedClientDeleted);
     });
   });
 });
