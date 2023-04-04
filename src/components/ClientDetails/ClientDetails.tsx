@@ -12,7 +12,7 @@ const ClientDetails: React.FC<ClientDetailsProps> = ({ client }): JSX.Element =>
         <h2 className="card-head__title">Client information:</h2>
       </div>
       <div className="card-body">
-        {!client && <span>There is no information</span>}
+        {!client && <span>No customer has been selected</span>}
         {client && (
           <>
             <div>
