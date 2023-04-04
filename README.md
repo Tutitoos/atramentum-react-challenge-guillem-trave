@@ -53,3 +53,7 @@ NEXT_PUBLIC_ADMIN_PASSWORD="<Contraseña del administrador.>"
 ## Autor
 
 Este proyecto fue desarrollado por Guillem Travé Font.
+
+[Web](https://atramentum-react-challenge-guillem-trave.vercel.app)
+**|**
+[Figma](https://www.figma.com/files/project/87427741)
